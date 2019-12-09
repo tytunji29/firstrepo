@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using TestAPI.Filters;
+using TestingRepo.Repository;
 
 namespace TestMainAPI
 {
@@ -42,7 +43,8 @@ namespace TestMainAPI
                 });
                 #endregion
 
-                services.AddControllers();
+
+                services.AddScoped<ICountryRepository, CountryRepository>();
             }
             catch (Exception)
             {
@@ -52,25 +54,27 @@ namespace TestMainAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ty test");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ty TEST");
                 c.RoutePrefix = string.Empty;
             });
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-          
             app.UseWelcomePage();
 
         }
