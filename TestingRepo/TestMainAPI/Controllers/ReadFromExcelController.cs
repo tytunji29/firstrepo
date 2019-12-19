@@ -1,9 +1,11 @@
 ﻿//using System;
 //using System.Collections.Generic;
+//using System.Data;
 //using System.Linq;
 //using System.Threading.Tasks;
 //using Microsoft.AspNetCore.Http;
 //using Microsoft.AspNetCore.Mvc;
+//using TestAPI.Helpers;
 
 //namespace TestAPI.Controllers
 //{
@@ -11,12 +13,7 @@
 //    [ApiController]
 //    public class ReadFromExcelController : ControllerBase
 //    {
-//        [Route("api/[controller]")]
-//        [ApiController]
-//        [Authorize(Policy = PolicyManager.Is_Basc_Authorized)]
-//        public class BascInvestorComplaintController : ControllerBase
-//        {
-//            private static ReturnObject _retObj;
+//          private static ReturnObject _retObj;
 //            private const string _errMsg = "An error occured while processing your request.";
 
 //            private readonly IConfiguration _config;
