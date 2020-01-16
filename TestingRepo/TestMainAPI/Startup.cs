@@ -62,6 +62,7 @@ namespace TestMainAPI
             }
             else
             {
+                //app.UseWebApiExceptionHandler();
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -72,9 +73,11 @@ namespace TestMainAPI
                 c.RoutePrefix = string.Empty;
             });
 
+
+            app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseAuthorization();
+           // app.UseAuthorization();
             app.UseWelcomePage();
 
         }
